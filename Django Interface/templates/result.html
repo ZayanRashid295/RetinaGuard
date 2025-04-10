@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result | Diabetic Retinopathy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            width: 90%;
+            max-width: 800px;
+            transition: all 0.3s ease;
+        }
+        
+        .container-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .header-gradient {
+            background: linear-gradient(to right, #FF6B8B, #FF8E53);
+            height: 8px;
+        }
+        
+        .result-badge {
+            background: linear-gradient(to right, #FF6B8B, #FF8E53);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.3);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #FF6B8B;
+            border: 2px solid #FF6B8B;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #FF6B8B, #FF8E53);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(255, 107, 139, 0.2);
+        }
+        
+        .result-card {
+            border-radius: 12px;
+            background-color: #f9fafc;
+            transition: all 0.3s ease;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-card animate-in">
+        <div class="header-gradient"></div>
+        <div class="p-8">
+            <div class="mb-8 text-center">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Classification Complete</h1>
+                <p class="text-gray-500">Analysis results for your retinal image</p>
+            </div>
+            
+            <div class="result-card p-6 mb-6">
+                <div class="flex flex-col items-center">
+                    <div class="mb-6">
+                        <div class="w-20 h-20 rounded-full bg-pink-50 flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-clipboard-check text-3xl text-pink-500"></i>
+                        </div>
+                        <p class="text-gray-600 text-center">Diagnostic Result</p>
+                    </div>
+                    
+                    <div class="result-badge mb-6">
+                        <span class="text-xl font-bold">{{ predicted_label }} (Class {{ predicted_class }})</span>
+                    </div>
+                    
+                    <div class="text-sm text-gray-500 text-center max-w-md">
+                        <p>This analysis is based on machine learning and should be confirmed by healthcare professionals.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-6">
+                <a href="{% url 'home' %}" class="btn-primary px-8 py-3 rounded-full font-medium flex items-center gap-2">
+                    <i class="fas fa-upload"></i>
+                    <span>Upload Another Image</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
