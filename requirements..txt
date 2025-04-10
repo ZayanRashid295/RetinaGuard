@@ -1,0 +1,7 @@
+pip install torch
+pip install torchvision
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install os
+pip install scikit-learn
